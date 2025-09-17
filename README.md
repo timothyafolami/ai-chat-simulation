@@ -106,7 +106,9 @@ cd ai-chat-simulation
 streamlit run streamlit_app.py
 ```
 In the sidebar:
-- Pick Persona 1 and Persona 2 from generated_personas
+- Choose source for each persona: Existing (pick from generated_personas) or Custom JSON
+- If using Custom JSON, provide an object like: {"id":"Name","needs":"...","personality":"..."}
+- Pick Persona 1 and Persona 2 from generated_personas (when using Existing)
 - Choose "Who starts?" (Persona 1 or Persona 2)
 - Click "Preview Profiles" to view each persona’s Needs and Personality
 - Click Start Chat to begin the conversation

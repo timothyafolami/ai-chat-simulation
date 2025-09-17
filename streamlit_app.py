@@ -27,19 +27,63 @@ def load_persona(name: str) -> dict:
     return json.loads((GENERATED_DIR / name).read_text(encoding="utf-8"))
 
 
+def parse_persona_json(txt: str) -> dict | None:
+    try:
+        obj = json.loads(txt or "")
+        if not isinstance(obj, dict):
+            return None
+        idv = obj.get("id")
+        needs = obj.get("needs")
+        pers = obj.get("personality")
+        if all(isinstance(x, str) and x.strip() for x in (idv, needs, pers)):
+            return {"id": idv.strip(), "needs": needs.strip(), "personality": pers.strip()}
+        return None
+    except Exception:
+        return None
+
+
 st.set_page_config(page_title="AI↔AI Chat Simulator", page_icon="🤖", layout="wide")
 
 st.sidebar.title("AI↔AI Chat – Controls")
 files = list_personas()
 if len(files) < 2:
-    st.sidebar.error("No persona JSONs found. Generate personas first.")
-    st.stop()
+    st.sidebar.warning("Fewer than 2 persona JSONs found. You can still use Custom JSON inputs.")
 
+st.sidebar.subheader("Persona Sources")
 col1, col2 = st.sidebar.columns(2)
 with col1:
-    p1_file = st.selectbox("Persona 1", files, index=0)
+    p1_source = st.selectbox("P1 Source", ["Existing", "Custom JSON"], index=0, key="p1_source")
 with col2:
-    p2_file = st.selectbox("Persona 2", files, index=1)
+    p2_source = st.selectbox("P2 Source", ["Existing", "Custom JSON"], index=0, key="p2_source")
+
+if p1_source == "Existing":
+    if files:
+        p1_file = st.selectbox("Persona 1", files, index=0, key="p1_file")
+    else:
+        st.info("No existing personas found. Switch to Custom JSON.")
+else:
+    st.text("Provide JSON with keys: id, needs, personality")
+    p1_json = st.text_area(
+        "Persona 1 JSON",
+        placeholder='{"id":"P1_Name","needs":"...","personality":"..."}',
+        height=160,
+        key="p1_json",
+    )
+
+if p2_source == "Existing":
+    if files:
+        default_index = 1 if len(files) > 1 else 0
+        p2_file = st.selectbox("Persona 2", files, index=default_index, key="p2_file")
+    else:
+        st.info("No existing personas found. Switch to Custom JSON.")
+else:
+    st.text("Provide JSON with keys: id, needs, personality")
+    p2_json = st.text_area(
+        "Persona 2 JSON",
+        placeholder='{"id":"P2_Name","needs":"...","personality":"..."}',
+        height=160,
+        key="p2_json",
+    )
 
 max_turns = st.sidebar.slider("Max messages", min_value=6, max_value=14, value=10, step=1)
 starter_choice = st.sidebar.radio("Who starts?", ["Persona 1", "Persona 2"], index=0)
@@ -61,32 +105,85 @@ if preview_btn:
 
 # Show preview when requested (before starting chat)
 if st.session_state["_preview_active"]:
-    try:
-        p1_prev = load_persona(p1_file)
-        p2_prev = load_persona(p2_file)
-        with preview_area:
-            st.subheader("Preview")
-            p1_avatar = "🟦"
-            p2_avatar = "🟩"
-            with st.chat_message("user", avatar=p1_avatar):
-                st.markdown(
-                    f"Preview — {p1_prev.get('id','')}\n\n"
-                    f"Needs: {p1_prev.get('needs','').strip()}\n\n"
-                    f"Personality: {p1_prev.get('personality','').strip()}"
-                )
-            with st.chat_message("assistant", avatar=p2_avatar):
-                st.markdown(
-                    f"Preview — {p2_prev.get('id','')}\n\n"
-                    f"Needs: {p2_prev.get('needs','').strip()}\n\n"
-                    f"Personality: {p2_prev.get('personality','').strip()}"
-                )
-    except Exception:
-        pass
+    with preview_area:
+        st.subheader("Preview")
+        p1_avatar = "🟦"
+        p2_avatar = "🟩"
+        # Resolve P1
+        if st.session_state.get("p1_source", "Existing") == "Existing":
+            try:
+                p1_prev = load_persona(st.session_state.get("p1_file"))
+            except Exception:
+                p1_prev = None
+        else:
+            p1_prev = parse_persona_json(st.session_state.get("p1_json", ""))
+        # Resolve P2
+        if st.session_state.get("p2_source", "Existing") == "Existing":
+            try:
+                p2_prev = load_persona(st.session_state.get("p2_file"))
+            except Exception:
+                p2_prev = None
+        else:
+            p2_prev = parse_persona_json(st.session_state.get("p2_json", ""))
+
+        any_ok = False
+        cols = st.columns(2)
+        # Persona 1 preview (if available)
+        with cols[0]:
+            st.caption("Persona 1")
+            if p1_prev:
+                any_ok = True
+                with st.chat_message("user", avatar=p1_avatar):
+                    st.markdown(
+                        f"Preview — {p1_prev.get('id','')}\n\n"
+                        f"Needs: {p1_prev.get('needs','').strip()}\n\n"
+                        f"Personality: {p1_prev.get('personality','').strip()}"
+                    )
+            else:
+                st.info("Waiting for valid Persona 1 (select file or enter JSON).")
+        # Persona 2 preview (if available)
+        with cols[1]:
+            st.caption("Persona 2")
+            if p2_prev:
+                any_ok = True
+                with st.chat_message("assistant", avatar=p2_avatar):
+                    st.markdown(
+                        f"Preview — {p2_prev.get('id','')}\n\n"
+                        f"Needs: {p2_prev.get('needs','').strip()}\n\n"
+                        f"Personality: {p2_prev.get('personality','').strip()}"
+                    )
+            else:
+                st.info("Waiting for valid Persona 2 (select file or enter JSON).")
+        if not any_ok:
+            st.warning("Please provide at least one valid persona to preview (file or valid JSON with id, needs, personality).")
 
 if start_btn:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    p1 = load_persona(p1_file)
-    p2 = load_persona(p2_file)
+    # Resolve P1
+    if st.session_state.get("p1_source", "Existing") == "Existing":
+        try:
+            p1 = load_persona(st.session_state.get("p1_file"))
+        except Exception:
+            st.sidebar.error("Select a valid Persona 1 file or provide valid JSON")
+            st.stop()
+    else:
+        p1 = parse_persona_json(st.session_state.get("p1_json", ""))
+        if not p1:
+            st.sidebar.error("Invalid Persona 1 JSON. Expect keys: id, needs, personality (non-empty strings).")
+            st.stop()
+
+    # Resolve P2
+    if st.session_state.get("p2_source", "Existing") == "Existing":
+        try:
+            p2 = load_persona(st.session_state.get("p2_file"))
+        except Exception:
+            st.sidebar.error("Select a valid Persona 2 file or provide valid JSON")
+            st.stop()
+    else:
+        p2 = parse_persona_json(st.session_state.get("p2_json", ""))
+        if not p2:
+            st.sidebar.error("Invalid Persona 2 JSON. Expect keys: id, needs, personality (non-empty strings).")
+            st.stop()
 
     a1 = PersonaAgent(
         role="profile_1",
