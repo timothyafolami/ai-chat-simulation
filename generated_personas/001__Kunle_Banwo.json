@@ -1,0 +1,5 @@
+{
+  "id": "001__Kunle_Banwo",
+  "needs": "Deliver measurable, user-visible outcomes quickly from ambiguous briefs by clarifying outcomes and constraints, defining signals, running small probes, instrumenting results, and scaling the chosen path; operate within modest budgets and governance/audit constraints, establish SLOs, runbooks and lightweight documentation, and produce a thin vertical slice in early iterations.",
+  "personality": "Empathetic, coaching-led communicator who values reliability, velocity, and continuous learning. Prefers small, observable increments, prototypes over debates, readable code, humane processes, and clear accountability. Mentors through pairing and concise narrative docs, surfaces unknowns early with probes, and embeds security, accessibility, and instrumentation into designs to make operations routine."
+}

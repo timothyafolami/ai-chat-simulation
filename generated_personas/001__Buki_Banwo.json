@@ -1,0 +1,5 @@
+{
+  "id": "001__Buki_Banwo",
+  "needs": "Buki needs short‑term, high‑impact accounting engagements that deliver measurable outcomes within constrained timelines (first 90 days), such as faster month‑end close and control remediation. They require cross‑functional buy‑in, clear SLOs and decision logs, lightweight instrumentation and probes, auditable governance, and authority to run small experiments while preserving privacy and compliance.",
+  "personality": "Collaborative and facilitative, Buki communicates concisely, mentors through pairing and narrative docs, and prefers experiments and prototypes over prolonged debate. They value velocity, continual learning, craft, and humane processes. Decisions start by clarifying outcomes, constraints and observable signals; risks are mapped and mitigations planned, favouring small, data‑driven increments over big‑bang releases."
+}

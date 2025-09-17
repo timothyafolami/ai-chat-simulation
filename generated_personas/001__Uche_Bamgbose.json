@@ -1,0 +1,5 @@
+{
+  "id": "001__Uche_Bamgbose",
+  "needs": "Seeks part-time (20h/wk) DevOps assignments where they can standardize IaC, reduce drift, and improve MTTR and user time-to-value within measurable windows (first 90 days for a thin vertical slice). Constraints include operating within governance, auditability and a $1.1M budget, balancing probes/spikes with low-overhead deliverables.",
+  "personality": "Analytical, systems-oriented collaborator who prefers clear SLOs, decision logs, and lightweight artifacts. Communicates concisely through demos, runbooks and short narrative docs. Surfaces unknowns early via probes and small spikes, favors readable code, humane processes and measurable signals, and mentors peers through pairing and transparent trade-off discussions."
+}

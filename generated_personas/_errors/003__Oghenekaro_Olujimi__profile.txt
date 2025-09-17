@@ -1,0 +1,57 @@
+Oghenekaro Olujimi is a Data Scientist based in Dublin, IE (Asia/Dubai). They combine hands‑on
+expertise in Pandas, scikit‑learn, XGBoost, Experimentation, Causal Inference, SQL with a
+pragmatic, outcomes‑first mindset.
+
+Recent highlights include: Built uplift models to optimize campaigns, cutting CPA by 7%; Created
+causal dashboards reducing false positives in A/B reads. They collaborate across functions and
+turn ambiguous briefs into measurable milestones.
+
+Collaboration style is analytical and systems‑oriented. Core values: craft, evidence,
+reliability. They maintain lightweight artifacts—decision records, design notes, and short
+demos—to keep momentum visible.
+
+Education & credentials: MBA in a relevant field. Certifications (where relevant): PMP. They
+contribute to community spaces through talks, notes, and occasional open‑source patches.
+
+In practice, data scientist practice starts with clarifying outcomes, constraints, and the
+signals we will observe. I optimize for readable code, humane processes, and clear
+accountability. Runbooks, SLOs, and dashboards turn firefighting into routine operations. We
+delete what we no longer need—simplicity compounds as a strategic advantage. Inclusive defaults
+and accessibility reduce support burden for everyone. Runbooks, SLOs, and dashboards turn
+firefighting into routine operations. In practice, data scientist practice starts with
+clarifying outcomes, constraints, and the signals we will observe. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. We keep error budgets honest and
+let data guide iteration pace. Runbooks, SLOs, and dashboards turn firefighting into routine
+operations. We keep error budgets honest and let data guide iteration pace. We keep error
+budgets honest and let data guide iteration pace.
+
+We keep error budgets honest and let data guide iteration pace. Runbooks, SLOs, and dashboards
+turn firefighting into routine operations. We delete what we no longer need—simplicity compounds
+as a strategic advantage. I optimize for readable code, humane processes, and clear
+accountability. I prefer small, observable increments over big‑bang releases. Runbooks, SLOs,
+and dashboards turn firefighting into routine operations. We delete what we no longer
+need—simplicity compounds as a strategic advantage. We delete what we no longer need—simplicity
+compounds as a strategic advantage. I optimize for readable code, humane processes, and clear
+accountability. We delete what we no longer need—simplicity compounds as a strategic advantage.
+We keep error budgets honest and let data guide iteration pace. We keep error budgets honest and
+let data guide iteration pace. We keep error budgets honest and let data guide iteration pace.
+In practice, execution, communication, and continuous improvement starts with clarifying
+outcomes, constraints, and the signals we will observe. Runbooks, SLOs, and dashboards turn
+firefighting into routine operations. In practice, execution, communication, and continuous
+improvement starts with clarifying outcomes, constraints, and the signals we will observe.
+
+We delete what we no longer need—simplicity compounds as a strategic advantage. We keep error
+budgets honest and let data guide iteration pace. Unknowns are surfaced early through probes and
+spikes instead of being buried in large PRs. Runbooks, SLOs, and dashboards turn firefighting
+into routine operations. I translate complexity into decisions that teams can act on. Unknowns
+are surfaced early through probes and spikes instead of being buried in large PRs. We delete
+what we no longer need—simplicity compounds as a strategic advantage. I optimize for readable
+code, humane processes, and clear accountability. We delete what we no longer need—simplicity
+compounds as a strategic advantage. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. In practice, professional profiles and collaboration
+starts with clarifying outcomes, constraints, and the signals we will observe. I optimize for
+readable code, humane processes, and clear accountability.

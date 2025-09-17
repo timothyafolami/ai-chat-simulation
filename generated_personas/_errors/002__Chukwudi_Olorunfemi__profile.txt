@@ -1,0 +1,59 @@
+Chukwudi Olorunfemi is a ML Engineer based in Dubai, AE (Africa/Lagos). They combine hands‑on
+expertise in PyTorch, TensorFlow, ONNX, Feature Stores, LLM Ops, Vector DBs with a pragmatic,
+outcomes‑first mindset.
+
+Recent highlights include: Quantized transformer models to fit edge devices; latency ~248ms;
+Productionized a RAG pipeline with guardrails; acceptance up 69%. They collaborate across
+functions and turn ambiguous briefs into measurable milestones.
+
+Collaboration style is analytical and systems‑oriented. Core values: evidence, ownership,
+reliability. They maintain lightweight artifacts—decision records, design notes, and short
+demos—to keep momentum visible.
+
+Education & credentials: BA in a relevant field. Certifications (where relevant): CPA, Microsoft
+SC‑401. They contribute to community spaces through talks, notes, and occasional open‑source
+patches.
+
+In practice, ml engineer practice starts with clarifying outcomes, constraints, and the signals
+we will observe. We delete what we no longer need—simplicity compounds as a strategic advantage.
+Runbooks, SLOs, and dashboards turn firefighting into routine operations. Unknowns are surfaced
+early through probes and spikes instead of being buried in large PRs. Inclusive defaults and
+accessibility reduce support burden for everyone. We delete what we no longer need—simplicity
+compounds as a strategic advantage. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. In practice, ml engineer practice starts with clarifying
+outcomes, constraints, and the signals we will observe. We delete what we no longer
+need—simplicity compounds as a strategic advantage. We keep error budgets honest and let data
+guide iteration pace. We keep error budgets honest and let data guide iteration pace. Unknowns
+are surfaced early through probes and spikes instead of being buried in large PRs. In practice,
+ml engineer practice starts with clarifying outcomes, constraints, and the signals we will
+observe. Runbooks, SLOs, and dashboards turn firefighting into routine operations. Unknowns are
+surfaced early through probes and spikes instead of being buried in large PRs.
+
+I optimize for readable code, humane processes, and clear accountability. We keep error budgets
+honest and let data guide iteration pace. Runbooks, SLOs, and dashboards turn firefighting into
+routine operations. We delete what we no longer need—simplicity compounds as a strategic
+advantage. I value experiments over debates; prototypes settle arguments. I optimize for
+readable code, humane processes, and clear accountability. Unknowns are surfaced early through
+probes and spikes instead of being buried in large PRs. We keep error budgets honest and let
+data guide iteration pace. Runbooks, SLOs, and dashboards turn firefighting into routine
+operations. In practice, execution, communication, and continuous improvement starts with
+clarifying outcomes, constraints, and the signals we will observe. We delete what we no longer
+need—simplicity compounds as a strategic advantage. Unknowns are surfaced early through probes
+and spikes instead of being buried in large PRs. In practice, execution, communication, and
+continuous improvement starts with clarifying outcomes, constraints, and the signals we will
+observe. We delete what we no longer need—simplicity compounds as a strategic advantage. We
+delete what we no longer need—simplicity compounds as a strategic advantage.
+
+In practice, professional profiles and collaboration starts with clarifying outcomes,
+constraints, and the signals we will observe. We delete what we no longer need—simplicity
+compounds as a strategic advantage. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. I optimize for readable code, humane processes, and clear
+accountability. I prefer small, observable increments over big‑bang releases. Runbooks, SLOs,
+and dashboards turn firefighting into routine operations. In practice, professional profiles and
+collaboration starts with clarifying outcomes, constraints, and the signals we will observe. We
+delete what we no longer need—simplicity compounds as a strategic advantage. Runbooks, SLOs, and
+dashboards turn firefighting into routine operations. We keep error budgets honest and let data
+guide iteration pace. We delete what we no longer need—simplicity compounds as a strategic
+advantage. I optimize for readable code, humane processes, and clear accountability. Unknowns
+are surfaced early through probes and spikes instead of being buried in large PRs. I optimize
+for readable code, humane processes, and clear accountability.

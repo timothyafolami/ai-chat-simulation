@@ -1,0 +1,58 @@
+Ireti Ogunbowale is a QA Engineer based in Lagos, NG (America/Chicago). They combine hands‑on
+expertise in Test Strategy, Automation, Playwright, Cypress, API Testing, Load Testing with a
+pragmatic, outcomes‑first mindset.
+
+Recent highlights include: Reduced escaped defects by 22% via risk‑based testing; Set up
+contract tests that stabilized integrations across services. They collaborate across functions
+and turn ambiguous briefs into measurable milestones.
+
+Collaboration style is analytical and systems‑oriented. Core values: velocity, inclusion,
+evidence. They maintain lightweight artifacts—decision records, design notes, and short demos—to
+keep momentum visible.
+
+Education & credentials: PhD in a relevant field. Certifications (where relevant): RN. They
+contribute to community spaces through talks, notes, and occasional open‑source patches.
+
+I optimize for readable code, humane processes, and clear accountability. Unknowns are surfaced
+early through probes and spikes instead of being buried in large PRs. In practice, qa engineer
+practice starts with clarifying outcomes, constraints, and the signals we will observe. We
+delete what we no longer need—simplicity compounds as a strategic advantage. Security and
+privacy are embedded in design, not bolted on later. We keep error budgets honest and let data
+guide iteration pace. In practice, qa engineer practice starts with clarifying outcomes,
+constraints, and the signals we will observe. We keep error budgets honest and let data guide
+iteration pace. I optimize for readable code, humane processes, and clear accountability. We
+keep error budgets honest and let data guide iteration pace. Unknowns are surfaced early through
+probes and spikes instead of being buried in large PRs. We keep error budgets honest and let
+data guide iteration pace. Unknowns are surfaced early through probes and spikes instead of
+being buried in large PRs. Runbooks, SLOs, and dashboards turn firefighting into routine
+operations. We delete what we no longer need—simplicity compounds as a strategic advantage.
+
+We delete what we no longer need—simplicity compounds as a strategic advantage. Runbooks, SLOs,
+and dashboards turn firefighting into routine operations. In practice, execution, communication,
+and continuous improvement starts with clarifying outcomes, constraints, and the signals we will
+observe. I optimize for readable code, humane processes, and clear accountability. Security and
+privacy are embedded in design, not bolted on later. We delete what we no longer need—simplicity
+compounds as a strategic advantage. Runbooks, SLOs, and dashboards turn firefighting into
+routine operations. We delete what we no longer need—simplicity compounds as a strategic
+advantage. Unknowns are surfaced early through probes and spikes instead of being buried in
+large PRs. We delete what we no longer need—simplicity compounds as a strategic advantage.
+Unknowns are surfaced early through probes and spikes instead of being buried in large PRs. In
+practice, execution, communication, and continuous improvement starts with clarifying outcomes,
+constraints, and the signals we will observe. We keep error budgets honest and let data guide
+iteration pace. We delete what we no longer need—simplicity compounds as a strategic advantage.
+In practice, execution, communication, and continuous improvement starts with clarifying
+outcomes, constraints, and the signals we will observe.
+
+Runbooks, SLOs, and dashboards turn firefighting into routine operations. Unknowns are surfaced
+early through probes and spikes instead of being buried in large PRs. We keep error budgets
+honest and let data guide iteration pace. In practice, professional profiles and collaboration
+starts with clarifying outcomes, constraints, and the signals we will observe. I translate
+complexity into decisions that teams can act on. I optimize for readable code, humane processes,
+and clear accountability. Unknowns are surfaced early through probes and spikes instead of being
+buried in large PRs. We delete what we no longer need—simplicity compounds as a strategic
+advantage. Runbooks, SLOs, and dashboards turn firefighting into routine operations. In
+practice, professional profiles and collaboration starts with clarifying outcomes, constraints,
+and the signals we will observe. I optimize for readable code, humane processes, and clear
+accountability. Runbooks, SLOs, and dashboards turn firefighting into routine operations.
+Unknowns are surfaced early through probes and spikes instead of being buried in large PRs. I
+optimize for readable code, humane processes, and clear accountability.

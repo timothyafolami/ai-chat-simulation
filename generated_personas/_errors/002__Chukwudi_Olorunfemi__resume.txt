@@ -1,0 +1,140 @@
+Chukwudi Olorunfemi — ML Engineer | Dubai, AE | Full‑time | Africa/Lagos
+
+Professional Summary (to Director of ML / CTO): Experienced ml engineer delivering measurable
+outcomes; comfortable operating with ambiguity and turning strategy into execution for Director
+of ML / CTO.
+
+Core Skills: PyTorch, TensorFlow, ONNX, Feature Stores, LLM Ops, Vector DBs
+
+Selected Achievements: - Delivered initiative that improved key KPI by 53% within 65 days. -
+Reduced cost or waste by 23% via process redesign and better instrumentation. - Cut
+time‑to‑value for users by 18% using simpler defaults and progressive disclosure. - Managed
+budgets totaling $2.0M while upholding governance and auditability.
+
+Case Study: Quantized transformer models to fit edge devices; latency ~248ms. Approach: defined
+signals, ran small probes, measured deltas, and scaled the chosen path. Risks were mapped with
+mitigations, and results were tied to user‑visible outcomes.
+
+Case Study: Productionized a RAG pipeline with guardrails; acceptance up 69%. Approach: defined
+signals, ran small probes, measured deltas, and scaled the chosen path. Risks were mapped with
+mitigations, and results were tied to user‑visible outcomes.
+
+Methods & Toolkits: SLOs, Service Blueprints, Risk Logs, Discovery, Incident Response, JTBD.
+
+Collaboration & Leadership: operates with analytical and systems‑oriented style; prefers clear
+SLOs, decision logs, and transparent trade‑off discussions. Mentors peers through pairing and
+concise narrative docs.
+
+First 90 Days: discover constraints and goals; design pragmatic architecture/process; deliver a
+thin vertical slice; instrument and iterate; establish rituals that keep cross‑functional
+alignment healthy.
+
+Education: BA in a relevant field. Certifications: CPA, Microsoft SC‑401.
+
+Talks & Publications: presented Scaling Insight Engines (2016); occasional contributor to
+professional forums.
+
+We keep error budgets honest and let data guide iteration pace. I optimize for readable code,
+humane processes, and clear accountability. In practice, ml engineer resumes and
+audience‑specific narratives starts with clarifying outcomes, constraints, and the signals we
+will observe. Unknowns are surfaced early through probes and spikes instead of being buried in
+large PRs. I translate complexity into decisions that teams can act on. We keep error budgets
+honest and let data guide iteration pace. In practice, ml engineer resumes and audience‑specific
+narratives starts with clarifying outcomes, constraints, and the signals we will observe. We
+delete what we no longer need—simplicity compounds as a strategic advantage. Unknowns are
+surfaced early through probes and spikes instead of being buried in large PRs. In practice, ml
+engineer resumes and audience‑specific narratives starts with clarifying outcomes, constraints,
+and the signals we will observe. I optimize for readable code, humane processes, and clear
+accountability. We delete what we no longer need—simplicity compounds as a strategic advantage.
+We keep error budgets honest and let data guide iteration pace. I optimize for readable code,
+humane processes, and clear accountability.
+
+In practice, ml engineer resumes and audience‑specific narratives starts with clarifying
+outcomes, constraints, and the signals we will observe. I optimize for readable code, humane
+processes, and clear accountability. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. Runbooks, SLOs, and dashboards turn firefighting into
+routine operations. Security and privacy are embedded in design, not bolted on later. Runbooks,
+SLOs, and dashboards turn firefighting into routine operations. Runbooks, SLOs, and dashboards
+turn firefighting into routine operations. We delete what we no longer need—simplicity compounds
+as a strategic advantage. We delete what we no longer need—simplicity compounds as a strategic
+advantage. We delete what we no longer need—simplicity compounds as a strategic advantage. In
+practice, ml engineer resumes and audience‑specific narratives starts with clarifying outcomes,
+constraints, and the signals we will observe. Runbooks, SLOs, and dashboards turn firefighting
+into routine operations. Unknowns are surfaced early through probes and spikes instead of being
+buried in large PRs. We keep error budgets honest and let data guide iteration pace. We delete
+what we no longer need—simplicity compounds as a strategic advantage.
+
+In practice, ml engineer resumes and audience‑specific narratives starts with clarifying
+outcomes, constraints, and the signals we will observe. I optimize for readable code, humane
+processes, and clear accountability. We delete what we no longer need—simplicity compounds as a
+strategic advantage. We keep error budgets honest and let data guide iteration pace. I prefer
+small, observable increments over big‑bang releases. We delete what we no longer need—simplicity
+compounds as a strategic advantage. Runbooks, SLOs, and dashboards turn firefighting into
+routine operations. In practice, ml engineer resumes and audience‑specific narratives starts
+with clarifying outcomes, constraints, and the signals we will observe. Unknowns are surfaced
+early through probes and spikes instead of being buried in large PRs. We delete what we no
+longer need—simplicity compounds as a strategic advantage. In practice, ml engineer resumes and
+audience‑specific narratives starts with clarifying outcomes, constraints, and the signals we
+will observe. Unknowns are surfaced early through probes and spikes instead of being buried in
+large PRs. We delete what we no longer need—simplicity compounds as a strategic advantage.
+Unknowns are surfaced early through probes and spikes instead of being buried in large PRs.
+
+In practice, ml engineer resumes and audience‑specific narratives starts with clarifying
+outcomes, constraints, and the signals we will observe. Unknowns are surfaced early through
+probes and spikes instead of being buried in large PRs. We keep error budgets honest and let
+data guide iteration pace. I optimize for readable code, humane processes, and clear
+accountability. I translate complexity into decisions that teams can act on. We delete what we
+no longer need—simplicity compounds as a strategic advantage. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. We keep error budgets honest and
+let data guide iteration pace. In practice, ml engineer resumes and audience‑specific narratives
+starts with clarifying outcomes, constraints, and the signals we will observe. Unknowns are
+surfaced early through probes and spikes instead of being buried in large PRs. In practice, ml
+engineer resumes and audience‑specific narratives starts with clarifying outcomes, constraints,
+and the signals we will observe. Runbooks, SLOs, and dashboards turn firefighting into routine
+operations. Runbooks, SLOs, and dashboards turn firefighting into routine operations. We delete
+what we no longer need—simplicity compounds as a strategic advantage.
+
+We delete what we no longer need—simplicity compounds as a strategic advantage. We keep error
+budgets honest and let data guide iteration pace. In practice, ml engineer resumes and
+audience‑specific narratives starts with clarifying outcomes, constraints, and the signals we
+will observe. Runbooks, SLOs, and dashboards turn firefighting into routine operations. I
+translate complexity into decisions that teams can act on. Unknowns are surfaced early through
+probes and spikes instead of being buried in large PRs. In practice, ml engineer resumes and
+audience‑specific narratives starts with clarifying outcomes, constraints, and the signals we
+will observe. We keep error budgets honest and let data guide iteration pace. We delete what we
+no longer need—simplicity compounds as a strategic advantage. Unknowns are surfaced early
+through probes and spikes instead of being buried in large PRs. We delete what we no longer
+need—simplicity compounds as a strategic advantage. We delete what we no longer need—simplicity
+compounds as a strategic advantage. We keep error budgets honest and let data guide iteration
+pace. Runbooks, SLOs, and dashboards turn firefighting into routine operations. Runbooks, SLOs,
+and dashboards turn firefighting into routine operations.
+
+We delete what we no longer need—simplicity compounds as a strategic advantage. I optimize for
+readable code, humane processes, and clear accountability. Unknowns are surfaced early through
+probes and spikes instead of being buried in large PRs. We keep error budgets honest and let
+data guide iteration pace. I treat documentation as a product and keep stakeholders aligned with
+crisp updates. Runbooks, SLOs, and dashboards turn firefighting into routine operations.
+Unknowns are surfaced early through probes and spikes instead of being buried in large PRs.
+Runbooks, SLOs, and dashboards turn firefighting into routine operations. Runbooks, SLOs, and
+dashboards turn firefighting into routine operations. I optimize for readable code, humane
+processes, and clear accountability. Unknowns are surfaced early through probes and spikes
+instead of being buried in large PRs. We keep error budgets honest and let data guide iteration
+pace. We delete what we no longer need—simplicity compounds as a strategic advantage. We delete
+what we no longer need—simplicity compounds as a strategic advantage. Runbooks, SLOs, and
+dashboards turn firefighting into routine operations. We delete what we no longer
+need—simplicity compounds as a strategic advantage.
+
+I optimize for readable code, humane processes, and clear accountability. We keep error budgets
+honest and let data guide iteration pace. Runbooks, SLOs, and dashboards turn firefighting into
+routine operations. Unknowns are surfaced early through probes and spikes instead of being
+buried in large PRs. I translate complexity into decisions that teams can act on. Runbooks,
+SLOs, and dashboards turn firefighting into routine operations. I optimize for readable code,
+humane processes, and clear accountability. We keep error budgets honest and let data guide
+iteration pace. We keep error budgets honest and let data guide iteration pace. I optimize for
+readable code, humane processes, and clear accountability. Runbooks, SLOs, and dashboards turn
+firefighting into routine operations. We keep error budgets honest and let data guide iteration
+pace. Runbooks, SLOs, and dashboards turn firefighting into routine operations. Runbooks, SLOs,
+and dashboards turn firefighting into routine operations. In practice, ml engineer resumes and
+audience‑specific narratives starts with clarifying outcomes, constraints, and the signals we
+will observe. Runbooks, SLOs, and dashboards turn firefighting into routine operations. Unknowns
+are surfaced early through probes and spikes instead of being buried in large PRs.
