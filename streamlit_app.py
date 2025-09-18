@@ -28,6 +28,7 @@ def load_persona(name: str) -> dict:
 
 
 def parse_persona_json(txt: str) -> dict | None:
+    """Parse a JSON string and validate it has id/needs/personality strings."""
     try:
         obj = json.loads(txt or "")
         if not isinstance(obj, dict):
@@ -40,6 +41,24 @@ def parse_persona_json(txt: str) -> dict | None:
         return None
     except Exception:
         return None
+
+
+def validate_persona_dict(d: dict | None) -> dict | None:
+    """Validate a dict with keys id/needs/personality as non-empty strings."""
+    if not isinstance(d, dict):
+        return None
+    idv = d.get("id")
+    needs = d.get("needs")
+    pers = d.get("personality")
+    if all(isinstance(x, str) and x.strip() for x in (idv, needs, pers)):
+        return {"id": idv.strip(), "needs": needs.strip(), "personality": pers.strip()}
+    return None
+
+
+ 
+
+
+# Removed advanced row editor helpers; using plain JSON textarea for Custom inputs.
 
 
 st.set_page_config(page_title="AI↔AI Chat Simulator", page_icon="🤖", layout="wide")
@@ -63,12 +82,11 @@ if p1_source == "Existing":
         st.info("No existing personas found. Switch to Custom JSON.")
 else:
     st.text("Provide JSON with keys: id, needs, personality")
-    p1_json = st.text_area(
-        "Persona 1 JSON",
-        placeholder='{"id":"P1_Name","needs":"...","personality":"..."}',
-        height=160,
-        key="p1_json",
-    )
+    if "p1_json" not in st.session_state:
+        st.session_state["p1_json"] = json.dumps(
+            {"id": "P1_Name", "needs": "", "personality": ""}, ensure_ascii=False, indent=2
+        )
+    st.text_area("Persona 1 JSON", key="p1_json", height=200)
 
 if p2_source == "Existing":
     if files:
@@ -78,17 +96,17 @@ if p2_source == "Existing":
         st.info("No existing personas found. Switch to Custom JSON.")
 else:
     st.text("Provide JSON with keys: id, needs, personality")
-    p2_json = st.text_area(
-        "Persona 2 JSON",
-        placeholder='{"id":"P2_Name","needs":"...","personality":"..."}',
-        height=160,
-        key="p2_json",
-    )
+    if "p2_json" not in st.session_state:
+        st.session_state["p2_json"] = json.dumps(
+            {"id": "P2_Name", "needs": "", "personality": ""}, ensure_ascii=False, indent=2
+        )
+    st.text_area("Persona 2 JSON", key="p2_json", height=200)
 
 max_turns = st.sidebar.slider("Max messages", min_value=6, max_value=14, value=10, step=1)
 starter_choice = st.sidebar.radio("Who starts?", ["Persona 1", "Persona 2"], index=0)
 preview_btn = st.sidebar.button("Preview Profiles")
 start_btn = st.sidebar.button("Start Chat", type="primary")
+reset_btn = st.sidebar.button("Reset Custom Inputs")
 
 out_box = st.sidebar.container()
 
@@ -96,6 +114,13 @@ st.title("Live AI↔AI Conversation")
 preview_area = st.container()
 chat_area = st.container()
 status_text = st.empty()
+
+# Optional: reset custom JSON inputs/state
+if reset_btn:
+    for k in ("p1_json", "p2_json"):
+        if k in st.session_state:
+            del st.session_state[k]
+    st.rerun()
 
 # Remember preview toggle across reruns
 if "_preview_active" not in st.session_state:
@@ -185,6 +210,8 @@ if start_btn:
             st.sidebar.error("Invalid Persona 2 JSON. Expect keys: id, needs, personality (non-empty strings).")
             st.stop()
 
+    # Note: no auto-save of custom inputs on start (to avoid confusion)
+
     a1 = PersonaAgent(
         role="profile_1",
         agent_id=p1.get("id", ""),
@@ -236,12 +263,20 @@ if start_btn:
 
                 # Post-chat review (blocking)
                 import asyncio
-                rev = asyncio.run(review_conversation(p1, p2, result.get("conversation", [])))
+                rev = asyncio.run(review_conversation(p1, p2, result.get("conversation", []), outcome=result.get('outcome')))
 
                 # Sidebar summary
                 with out_box:
                     st.subheader("Review")
-                    st.metric("Similarity", f"{rev.get('similarity_score', 0):.3f}")
+                    # Prefer aggregate from similarity_signals when available
+                    sim_sig = rev.get('similarity_signals') or {}
+                    sim_agg = sim_sig.get('aggregate', rev.get('similarity_score', 0.0))
+                    st.metric("Similarity", f"{sim_agg:.3f}")
+                    if sim_sig:
+                        st.caption(
+                            f"n1→s2: {sim_sig.get('needs1_vs_personality2', 0.0):.3f} • "
+                            f"n2→s1: {sim_sig.get('needs2_vs_personality1', 0.0):.3f}"
+                        )
                     dec = rev.get("chat_decision", {})
                     st.write(f"Decision: {dec.get('decision','?')} (conf: {dec.get('confidence','?')})")
                     st.caption(dec.get("rationale", ""))

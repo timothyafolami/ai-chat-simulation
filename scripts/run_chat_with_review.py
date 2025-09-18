@@ -88,7 +88,7 @@ async def main():
 
     logger.info("Running post-chat review (similarity + decision) ...")
     t2 = time.perf_counter()
-    review = await review_conversation(p1, p2, convo.get("conversation", []))
+    review = await review_conversation(p1, p2, convo.get("conversation", []), outcome=convo.get('outcome'))
     t3 = time.perf_counter()
     logger.info(f"Review completed in {t3 - t2:.2f}s | similarity={review.get('similarity_score'):.3f}")
 

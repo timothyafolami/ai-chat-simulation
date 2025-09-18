@@ -1,0 +1,64 @@
+AI↔AI Chat Simulator — Core Concept Overview
+
+1) What It Is
+- A two‑persona simulator that conducts a short, outcome‑oriented business conversation, then explains whether to proceed, request more information, or conclude it’s not a fit.
+- The goal is to test alignment efficiently: “Do these two profiles work well together?”
+
+2) What a “Persona” Contains
+- Each persona is a compact profile with three fields:
+  - id: who this persona represents (a label)
+  - needs: what they are trying to achieve (goals, constraints)
+  - personality: how they prefer to work and communicate
+
+3) How the Conversation Works
+- Two agents talk in turns. Each turn is concise and grounded in the two personas.
+- Phases: introduction → discovery → deep_dive → challenges → closing. This pacing keeps the exchange focused and naturally leads to next steps.
+- Style rules keep messages tight: one question per turn, tie back to the counterpart’s needs or personality, and avoid making claims that aren’t confirmed.
+- As the chat progresses, we track simple engagement signals to produce a coarse “conversation outcome” (e.g., mutual_interest, interested_next_steps, needs_more_info, follow_up_later, not_a_fit). This is a heuristic hint about the tone of the exchange.
+
+4) How Fit Is Measured (Similarity)
+- We measure cross‑fit rather than generic sameness:
+  - n1→s2: How well Persona 1’s needs align with Persona 2’s personality.
+  - n2→s1: The reverse direction.
+  - aggregate: The mean of both directions (0.0–1.0).
+- This answers: “Does what P1 needs tend to be supported by how P2 operates, and vice‑versa?”
+
+5) How the Reviewer Decides
+- Inputs: persona_1, persona_2, the transcript, the conversation outcome, and the similarity signals.
+- First Pass Decision: A reviewer model returns { decision, rationale, confidence } based on the conversation content and persona context.
+- Normalization (Guardrails) so results make sense:
+  - Outcome guardrail: If the engine’s outcome is clearly negative (e.g., not_a_fit), the decision is aligned to that. If the outcome is needs_more_info or follow_up_later, a “proceed” requires an explicit, mutually agreed next step in the transcript; otherwise it is downgraded to more_info.
+  - Similarity guardrail: If aggregate similarity is very low, “proceed” only stands when the transcript shows a concrete next step that both parties acknowledged; confidence is reduced. Moderately low similarity also caps confidence.
+- The reviewer’s rationale references specific statements from the chat and acknowledges any tension (e.g., low similarity but a concrete next step).
+
+6) What the Interface Shows
+- Before the chat: choose two personas (from files or Custom JSON) and who starts.
+- During the chat: messages stream with phase tags and timestamps.
+- After the chat: the sidebar displays the similarity (aggregate plus both directions), the normalized decision and confidence, and a short rationale.
+
+7) What Gets Saved
+- A single JSON per run that includes:
+  - similarity_score and similarity_signals (n1→s2, n2→s1, aggregate)
+  - chat_decision: { decision, rationale, confidence }
+  - the full conversation transcript
+- These artifacts make results auditable and comparable across runs.
+
+8) Why This Approach
+- Cross‑fit similarity focuses on practical compatibility, not textual sameness.
+- Phase‑based pacing encourages concrete, evidence‑bearing exchanges in a handful of turns.
+- Guardrails prevent contradictions (e.g., very low similarity without a real commitment won’t yield a confident “proceed”).
+
+9) Limits to Keep in Mind
+- The conversation outcome is a heuristic hint, not a verdict; the reviewer uses the actual transcript.
+- “Explicit next step” detection looks for clear proposals and acknowledgements; it is conservative by design.
+- The quality of personas (clear needs and personality) strongly affects the usefulness of the conversation and similarity signals.
+
+Glossary
+- needs: objectives and constraints of a persona.
+- personality: working/communication style that influences collaboration.
+- n1→s2 / n2→s1: cross‑fit scores between needs and the counterpart’s personality.
+- aggregate: mean of the two directional scores (0.0–1.0).
+- decision: proceed | more_info | not_a_fit, with a confidence value and short rationale.
+
+Summary
+Define two concise profiles, let them hold a short, structured conversation, and get a recommendation that weighs both the actual dialogue and a principled measure of fit. The result is a fast, auditable read on whether to advance, ask for more detail, or disengage.

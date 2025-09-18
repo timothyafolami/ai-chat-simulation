@@ -107,7 +107,7 @@ streamlit run streamlit_app.py
 ```
 In the sidebar:
 - Choose source for each persona: Existing (pick from generated_personas) or Custom JSON
-- If using Custom JSON, provide an object like: {"id":"Name","needs":"...","personality":"..."}
+- If using Custom JSON, paste/edit an object like: {"id":"Name","needs":"...","personality":"..."}
 - Pick Persona 1 and Persona 2 from generated_personas (when using Existing)
 - Choose "Who starts?" (Persona 1 or Persona 2)
 - Click "Preview Profiles" to view each persona’s Needs and Personality
@@ -117,6 +117,25 @@ In the sidebar:
 Chat view behavior:
 - When you click "Preview Profiles", the chat shows each selected persona’s Needs and Personality for quick context.
 - Messages then stream live with role avatars, phase tags, and timestamps.
+
+Similarity & review:
+- Similarity measures cross‑fit between personas: P1 needs vs P2 personality and P2 needs vs P1 personality; the UI shows aggregate and both directional scores.
+- The reviewer receives these similarity signals and normalizes outcomes:
+  - Very low aggregate (< 0.35) gates "proceed" unless the transcript contains an explicit, mutually agreed next step; confidence is capped accordingly.
+  - Moderately low aggregate (< 0.50) reduces confidence.
+- The review JSON now includes `similarity_signals` alongside `similarity_score` and `chat_decision`.
+
+Conversation outcome integration:
+- The conversation engine reports an `outcome` (e.g., `mutual_interest`, `interested_next_steps`, `needs_more_info`, `follow_up_later`, `not_a_fit`).
+- The reviewer uses this as a guardrail:
+  - `not_a_fit` forces `decision: not_a_fit` with low confidence.
+  - `needs_more_info` / `follow_up_later` downgrade `proceed` to `more_info` unless the transcript shows a clear proposal acknowledged by the other party; confidence is capped.
+  - Favorable outcomes are respected but still constrained by similarity.
+- The payload to the LLM includes `conversation_outcome`, and the UI shows the final normalized decision and confidence.
+
+Similarity model:
+- Uses `sentence-transformers/all-MiniLM-L6-v2` by default. If a local cache exists at `models/all-MiniLM-L6-v2`, it will be used.
+- If the model cannot be loaded (e.g., no network), similarity falls back to 0.0 and is noted in logs.
 
 Grounding & truthfulness:
 - The agent prompt includes rules to avoid invention and unconfirmed commitments. Agents only rely on PROFILE_CONTEXT and the latest message; if info is missing, they ask one concise clarifying question.
