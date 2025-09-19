@@ -9,7 +9,7 @@ from loguru import logger
 
 from engine.agents import PersonaAgent
 from engine.stream_runner import run_chat_stream
-from engine.reviewer import review_conversation
+from engine.reviewer import review_conversation_sync
 
 
 ROOT = Path(__file__).resolve().parent
@@ -262,8 +262,7 @@ if start_btn:
                 status_text.success(f"Chat completed in {t1 - t0:.1f}s | outcome: {result.get('outcome')}")
 
                 # Post-chat review (blocking)
-                import asyncio
-                rev = asyncio.run(review_conversation(p1, p2, result.get("conversation", []), outcome=result.get('outcome')))
+                rev = review_conversation_sync(p1, p2, result.get("conversation", []), outcome=result.get('outcome'))
 
                 # Sidebar summary
                 with out_box:

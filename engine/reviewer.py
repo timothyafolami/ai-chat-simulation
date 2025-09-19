@@ -221,3 +221,138 @@ async def review_conversation(
         "chat_decision": decision,
         "chat": transcript,
     }
+
+
+def review_conversation_sync(
+    persona_1: Dict[str, Any],
+    persona_2: Dict[str, Any],
+    transcript: List[Dict[str, Any]],
+    outcome: str | None = None,
+) -> Dict[str, Any]:
+    """Synchronous variant of review_conversation using blocking LLM calls.
+
+    Intended for environments where calling asyncio.run is problematic (e.g.,
+    hosting platforms that already run an event loop).
+    """
+    if openai_chat is None:
+        raise RuntimeError("OPENAI_API_KEY not set; cannot run reviewer")
+
+    # Similarity via ST (asymmetric signals)
+    logger.info("similarity:start | computing cross needs/personality signals")
+    sim_signals = compute_similarity_signals(persona_1, persona_2)
+    sim = float(sim_signals.get('aggregate', 0.0))
+    logger.info(
+        f"similarity:done | agg={sim:.3f} n1~s2={sim_signals.get('needs1_vs_personality2',0.0):.3f} "
+        f"n2~s1={sim_signals.get('needs2_vs_personality1',0.0):.3f}"
+    )
+
+    # LLM decision (sync)
+    sys = SystemMessage(content=_REVIEW_PROMPT)
+    payload = {
+        "persona_1": {"id": persona_1.get("id"), "needs": persona_1.get("needs"), "personality": persona_1.get("personality")},
+        "persona_2": {"id": persona_2.get("id"), "needs": persona_2.get("needs"), "personality": persona_2.get("personality")},
+        "similarity_signals": sim_signals,
+        "conversation_outcome": outcome,
+        "conversation": transcript,
+    }
+    usr = HumanMessage(content=json.dumps(payload, ensure_ascii=False))
+    logger.info("decision:start | invoking LLM reviewer (sync)")
+    res = openai_chat.invoke([sys, usr])
+    logger.info("decision:done | received response (sync)")
+    txt = getattr(res, 'content', None) or "{}"
+    try:
+        decision = json.loads(txt)
+    except Exception:
+        # Try fence strip
+        s = txt.strip()
+        if s.startswith('```'):
+            lines = [ln for ln in s.splitlines() if not ln.strip().startswith('```')]
+            s = "\n".join(lines)
+        decision = json.loads(s)
+
+    # Normalize decision based on similarity signals to avoid contradictions
+    def _to_float(x, default=0.0):
+        try:
+            return float(x)
+        except Exception:
+            return default
+
+    sim_agg = float(sim_signals.get('aggregate', 0.0))
+    low_thr = 0.35
+    mid_thr = 0.5
+
+    def has_concrete_next_step(conv: List[Dict[str, Any]]) -> bool:
+        if not conv:
+            return False
+        propose_terms = [
+            'schedule', 'book', 'set up', 'arrange', 'meet', 'call', 'demo', 'pilot', 'poc', 'trial',
+            'calendar', 'invite', 'intro', 'follow up', 'send', 'share', 'deck', 'proposal', 'contract'
+        ]
+        ack_terms = [
+            "let's", "lets", 'i will', "i'll", 'we will', 'confirm', 'confirmed', 'works', 'sounds good',
+            'ok', 'okay', 'great', 'looking forward', 'see you'
+        ]
+        last_proposer = None
+        for turn in conv:
+            msg = (turn.get('message') or '').lower()
+            spk = turn.get('speaker')
+            if any(t in msg for t in propose_terms):
+                last_proposer = spk
+                continue
+            if last_proposer and spk and spk != last_proposer:
+                if any(t in msg for t in ack_terms):
+                    return True
+        return False
+
+    if not isinstance(decision, dict):
+        decision = {"decision": "more_info", "rationale": "Normalization: invalid reviewer output.", "confidence": 0.3}
+
+    decision.setdefault('decision', 'more_info')
+    decision.setdefault('rationale', '')
+    decision.setdefault('confidence', 0.5)
+
+    try:
+        conf = _to_float(decision.get('confidence', 0.5), 0.5)
+        dec = str(decision.get('decision', 'more_info'))
+        rat = str(decision.get('rationale', ''))
+
+        o = (outcome or '').lower().strip()
+        if o in ("not_a_fit",):
+            dec = 'not_a_fit'
+            conf = min(conf, 0.4)
+            rat = (rat + "\nNote: Conversation outcome indicates not_a_fit; normalized decision.").strip()
+        elif o in ("needs_more_info", "follow_up_later"):
+            agreed_next = has_concrete_next_step(transcript)
+            if dec == 'proceed' and not agreed_next:
+                dec = 'more_info'
+                conf = min(conf, 0.55)
+                rat = (rat + "\nNote: Outcome suggests more info/follow-up; downgraded from proceed.").strip()
+            else:
+                conf = min(conf, 0.65)
+
+        if sim_agg < low_thr:
+            agreed_next = has_concrete_next_step(transcript)
+            if dec == 'proceed' and not agreed_next:
+                dec = 'more_info'
+                conf = min(conf, 0.45)
+                rat = (rat + "\nNote: Low similarity; proceeding gated without explicit mutually agreed next step.").strip()
+            elif dec == 'proceed' and agreed_next:
+                conf = min(conf, 0.6)
+                rat = (rat + "\nNote: Low similarity; allowing proceed due to explicit next step, confidence capped.").strip()
+            else:
+                conf = min(conf, 0.55)
+                rat = (rat + "\nNote: Low similarity; confidence capped.").strip()
+        elif sim_agg < mid_thr:
+            conf = min(conf, 0.75)
+        decision['decision'] = dec
+        decision['confidence'] = round(conf, 2)
+        decision['rationale'] = rat
+    except Exception as e:
+        logger.warning(f"decision-normalization: failed to normalize due to {e}")
+
+    return {
+        "similarity_score": sim,
+        "similarity_signals": sim_signals,
+        "chat_decision": decision,
+        "chat": transcript,
+    }
